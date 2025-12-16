@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: EasyCA
+    ports:
+      - "7777:7777"
+    volumes:
+      # 重要：將容器內的 mkcert 資料夾映射到主機的 data 資料夾
+      # 這樣你的 Root CA 私鑰才會被保存下來
+      - ./data:/root/.local/share/mkcert
+    environment:
+      - CAROOT=/root/.local/share/mkcert
+    restart: unless-stopped

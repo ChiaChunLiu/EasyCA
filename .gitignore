@@ -1,0 +1,5 @@
+# credential files
+ssl/*.pem
+ssl/*.key
+# database file
+/data
